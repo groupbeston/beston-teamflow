@@ -843,9 +843,7 @@ function renderGlobalTasksTable(filteredTasks) {
 function getStatusThai(status) {
   switch (status) {
     case 'todo': return 'รอดำเนินการ';
-    case 'in-progress': return 'กำลังทำ';
     case 'blocked': return 'มีปัญหา';
-    case 'review': return 'รอตรวจสอบ';
     case 'done': return 'เสร็จสิ้น';
     default: return status;
   }
