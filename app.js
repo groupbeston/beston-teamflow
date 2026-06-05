@@ -852,9 +852,7 @@ function getStatusThai(status) {
 function getStatusClass(status) {
   switch (status) {
     case 'todo': return 'p-todo';
-    case 'in-progress': return 'p-in-progress';
     case 'blocked': return 'p-blocked';
-    case 'review': return 'p-review';
     case 'done': return 'p-done';
     default: return '';
   }
