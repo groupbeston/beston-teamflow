@@ -1443,17 +1443,9 @@ function sendLineSummary() {
   const lines=urgent.map((t,i)=>{
     const m=state.teamMembers[t.assignee]||{name:'ไม่ระบุ'};
     const urg=getDeadlineUrgency(t.deadline,t.status);
-    return `${i+1}. ${t.title}
-   👤 ${m.name.split(' ')[0]} | 📅 ${t.deadline} | ⚡ ${urg.label}`;
-  }).join('
-');
-  const msg=`[TeamFlow] 🔔 สรุปงานด่วนประจำวัน
-━━━━━━━━━━━━━━━━━
-มี ${urgent.length} งานที่ใกล้ถึง Deadline:
-
-${lines}
-━━━━━━━━━━━━━━━━━
-กรุณาติดตามและอัพเดทสถานะงานด้วยนะครับ/ค่ะ 🙏`;
+    return (i+1)+'. '+t.title+'\n   👤 '+m.name.split(' ')[0]+' | 📅 '+t.deadline+' | ⚡ '+urg.label;
+  }).join('\n');
+  const msg='[TeamFlow] 🔔 สรุปงานด่วนประจำวัน\n━━━━━━━━━━━━━━━━━\nมี '+urgent.length+' งานที่ใกล้ถึง Deadline:\n\n'+lines+'\n━━━━━━━━━━━━━━━━━\nกรุณาติดตามและอัพเดทสถานะงานด้วยนะครับ/ค่ะ 🙏';
   window.open(`https://line.me/R/msg/text/?${encodeURIComponent(msg)}`,'_blank');
   addSecurityLog('line-alert',`ส่งสรุปงานด่วน ${urgent.length} รายการทาง Line`);
   showToast(`เปิด Line สรุปงานด่วน ${urgent.length} รายการแล้ว!`);
